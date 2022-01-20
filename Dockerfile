@@ -6,5 +6,5 @@ COPY requirements.txt /app/requirements.txt
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 COPY . /app/
-CMD gunicorn chatengine.wsgi:application
+CMD daphne -b 0.0.0.0 -p 8080 mysite.asgi:application
 EXPOSE ${PORT}
