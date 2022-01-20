@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  redis:
+    hostname: redis
+    ports:
+      - "6379:6379"
+    image: "redis:5"
+  web:
+    build: .
+    ports:
+      - "8000:8080"
+    command: daphne -b 0.0.0.0 -p 8080 mysite.asgi:application
