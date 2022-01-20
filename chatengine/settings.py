@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from corsheaders.defaults import default_headers
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,17 @@ SECRET_KEY = 'gpbwb+ugb)b6(ujew0te#@_iz(s4_x&6_w%88m)ba=-^*5e5l7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    'public-key',
+    'project-id',
+    'private-key',
+    'user-name',
+    'user-secret',
+    'chat-id',
+    'access-key',
+]
 
 
 # Application definition
